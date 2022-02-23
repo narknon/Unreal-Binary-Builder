@@ -30,6 +30,10 @@ namespace UnrealBinaryBuilder.Classes
 			}
 
 			RegistryKey CustomEngineInstallations = Registry.CurrentUser.OpenSubKey("Software\\Epic Games\\Unreal Engine\\Builds");
+			if (CustomEngineInstallations == null)
+			{
+				return null;
+			}
 			InstalledEngines = CustomEngineInstallations.GetValueNames();
 			foreach (var s in InstalledEngines)
 			{
